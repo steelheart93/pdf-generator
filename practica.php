@@ -3,7 +3,7 @@ include_once "functions.php";
 $conexion = conectar_bd();
 
 // $id, llega desde index.php
-$row = consultar_tabla($conexion, "dbo.vistaminuta", '"No_CartaCompromiso" = ' . $id);
+$row = consultar_tabla($conexion, "dbo.vistapractica", '"IdPractica" = ' . $id);
 ?>
 
 <!doctype html>
@@ -22,7 +22,7 @@ $row = consultar_tabla($conexion, "dbo.vistaminuta", '"No_CartaCompromiso" = ' .
     <!-- Custom CSS -->
     <style>
         body {
-            font-size: 0.9em !important;
+            font-size: 0.7em !important;
         }
         .custom-col-1{
             vertical-align: top;
@@ -40,48 +40,110 @@ $row = consultar_tabla($conexion, "dbo.vistaminuta", '"No_CartaCompromiso" = ' .
 
 <body>
     <div class="container">
-        <div class="col-12 text-right">
+        <div class="text-right">
             <img src="<?php echo encode_img_base64("logo.jpg"); ?>">
         </div>
 
-        <p class="text-center font-weight-bold" style="white-space: pre-line;">
-            VICERRECTORÍA DE PROYECCIÓN UNIVERSITARIA
-            PRÁCTICAS ACADÉMICAS
-        </p>
+        <table class="table">
+            <tr>
+                <td class="custom-col-1"><h5>PROPUESTA DE PRÁCTICA</h5></td>
+                <td>
+                <p class="text-right"><?php echo_date($row['FechaDiligenciamiento']);?></p>
+                </td>
+            </tr>
+        </table>
 
-        <p>Manizales, <?php echo_date($row['FechaCreacion']);?></p>
+        <p class="text-center"><b>INFORMACIÓN DEL ESTUDIANTE</b></p>
+        <table class="table table-bordered">
+            <tr>
+                <td><b>Código:</b></td>
+                <td><?php echo $row['CodigoEstudiante'] ?></td>
+            </tr>
+            <tr>
+                <td><b>Nombres:</b></td>
+                <td><?php echo $row['NombresEstudiante'] ?></td>
+            </tr>
+            <tr>
+                <td><b>Apellidos:</b></td>
+                <td><?php echo $row['ApellidosEstudiante'] ?></td>
+            </tr>
+            <tr>
+                <td><b>Correo electrónico:</b></td>
+                <td><?php echo $row['CorreoEstudiante'] ?></td>
+            </tr>
+            <tr>
+                <td><b>Teléfono:</b></td>
+                <td><?php echo $row['TelefonoEstudiante'] ?></td>
+            </tr>
+            <tr>
+                <td><b>Docente asignado:</b></td>
+                <td><?php echo $row['NombreCompleto_Docente'] ?></td>
+            </tr>
+        </table>
 
-        <p class="text-center font-weight-bold">
-            CARTA COMPROMISO N° <?php echo $row['No_CartaCompromiso']; ?> AL CONVENIO <?php echo strtoupper($row['TipoConvenio']); ?> N° <?php echo $row['No_Convenio']; ?>
-        </p>
+        <br><br>
+        <p class="text-center"><b>INFORMACIÓN DE LA PRÁCTICA</b></p>
+        <table class="table table-bordered">
+            <tr>
+                <td><b>Tipo de práctica:</b></td>
+                <td><?php echo $row['TipoPractica'] ?></td>
+            </tr>
+            <tr>
+                <td><b>Entidad donde desarrolla la práctica:</b></td>
+                <td><?php echo $row['NombresEstudiante'] ?></td>
+            </tr>
+            <tr>
+                <td><b>Dependencia donde desarrolla la práctica:</b></td>
+                <td><?php echo $row['ApellidosEstudiante'] ?></td>
+            </tr>
+            <tr>
+                <td><b>Fecha de inicio:</b></td>
+                <td><?php echo_date($row['CorreoEstudiante'])?></td>
+            </tr>
+            <tr>
+                <td><b>Fecha de terminación:</b></td>
+                <td><?php echo_date($row['CorreoEstudiante'])?></td>
+            </tr>
+            <tr>
+                <td><b>Horario previsto:</b></td>
+                <td><?php echo $row['TelefonoEstudiante'] ?></td>
+            </tr>
+            <tr>
+                <td><b>Horas de trabajo semanales:</b></td>
+                <td><?php echo $row['TelefonoEstudiante'] ?></td>
+            </tr>
+            <tr>
+                <td><b>Práctica remunerada:</b></td>
+                <td><?php echo $row['TelefonoEstudiante'] ?></td>
+            </tr>
+        </table>
+
 
         <p class="text-justify">
             <b>LA UNIVERSIDAD DE CALDAS Y <?php echo strtoupper($row['NombreEmpresa_Convenio']); ?></b>, firmamos
-            convenio <?php echo strtolower($row['TipoConvenio']); ?> de <?php echo_date($row['FechaFirma_Convenio']);?> por un
-            período de <?php echo ($row['DuracionAnos_Convenio'] > 0) ? ($row['DuracionAnos_Convenio'] . " año(s)") : ($row['DuracionMeses_Convenio'] . " mes(es)"); ?>,
-            con prórroga <?php echo strtolower($row['ProrrogaConvenio']); ?>, para el desarrollo de actividades
-            conjuntas entre ellas las prácticas académicas, institucionales y pasantías, presentamos
-            el estudiante que adelantará la practica en el <?php echo $row['PeriodoPractica']; ?> periodo académico de <?php echo $row['AnoPractica']; ?>.
+            convenio TipoConvenio de FechaFirma_Convenio por un
+            con prórroga ProrrogaConvenio, para el desarrollo de actividades
+            conjuntas entre ellas las prácticas académicas, institucionales y pasantías, presentamos.
         </p>
 
         <table>
             <tr>
                 <td class="custom-col-1">FACULTAD:</td>
                 <td class="custom-col-2">
-                    <b><?php echo strtoupper($row['FacultadEstudiante']); ?></b>
+                    <b>FacultadEstudiante']); ?></b>
                 </td>
             </tr>
             <tr>
                 <td class="custom-col-1">PROGRAMA:</td>
                 <td class="custom-col-2">
-                    <b><?php echo strtoupper($row['ProgramaEstudiante']); ?></b>
+                    <b>ProgramaEstudiante']); ?></b>
                 </td>
             </tr>
             <tr>
                 <td class="custom-col-1">PRACTICA ACADEMICA DE:</td>
                 <td class="custom-col-2">
-                    <b><?php echo strtoupper($row['NombreCompleto_Estudiante']); ?></b>
-                    <br>C.C. <?php echo $row['CedulaEstudiante']; ?>
+                    <b>NombreCompleto_Estudiante']); ?></b>
+                    <br>C.C. CedulaEstudiante']; ?>
                 </td>
             </tr>
             <tr>
@@ -113,27 +175,9 @@ $row = consultar_tabla($conexion, "dbo.vistaminuta", '"No_CartaCompromiso" = ' .
                 </td>
             </tr>
             <tr>
-                <td class="custom-col-1">APOYO ECONOMICO:</td>
-                <td class="custom-col-2">
-                    <b>$<?php echo number_format($row['TotalRemuneracion']); ?></b> con cargo al CDP Nº <?php echo $row['No_CDP']; ?>, para ser
-                    <br>cancelados así:
-                    <?php $valores = explode(",", substr($row['Valores_Pagos'], 1, -1));?>
-                    <?php $fechas = explode(",", substr($row['Fechas_Pagos'], 1, -1));?>
-                    <?php for ($i = 0; $i < count($valores); $i++) {?>
-                        <br><b><?php echo $i + 1 . "."; ?></b> Cuota de $<?php echo number_format($valores[$i]); ?> el <?php echo_date(substr($fechas[$i], 1, -1));?>
-                    <?php }?>
-                </td>
-            </tr>
-            <tr>
                 <td class="custom-col-1">NOTA:</td>
                 <td class="custom-col-2">
-                    <?php echo $row['Anotaciones']; ?>
-                </td>
-            </tr>
-            <tr>
-                <td class="custom-col-1">NOTA:</td>
-                <td class="custom-col-2">
-                    La práctica se adelantara de manera <?php echo strtolower($row['ModalidadPractica']); ?>.
+                    La práctica se adelantara de manera ModalidadPractica']); ?>.
                 </td>
             </tr>
         </table>
@@ -142,7 +186,7 @@ $row = consultar_tabla($conexion, "dbo.vistaminuta", '"No_CartaCompromiso" = ' .
         <p class="text-justify">
             La presente carta de compromiso se perfecciona con la firma del Ordenador de Gasto, el
             Asesor Institucional, el Asesor Académico y el estudiante. Para constancia se firma en
-            Manizales, <?php echo_date($row['FechaCreacion']);?>.
+            Manizales, <?php echo_date($row['FechaDiligenciamiento']);?>.
         </p>
 
         <table>

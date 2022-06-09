@@ -40,7 +40,7 @@ $row = consultar_tabla($conexion, "dbo.vistaminuta", '"No_CartaCompromiso" = ' .
 
 <body>
     <div class="container">
-        <div class="col-12 text-right">
+        <div class="text-right">
             <img src="<?php echo encode_img_base64("logo.jpg"); ?>">
         </div>
 
