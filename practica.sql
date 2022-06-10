@@ -26,8 +26,8 @@ AS SELECT i."InternshipsId" AS "IdPractica",
     i."SpecificGoals" AS "ObjetivosEspecificos_Practica",
     array_agg(p3."Description") AS "Descripciones_Productos",
     array_agg(p3."Date") AS "Fechas_Productos",
-    array_agg(p3."Description") AS "Descripciones_Informes",
-    array_agg(p3."Date") AS "Fechas_Informes"
+    array_agg(r."Description") AS "Descripciones_Informes",
+    array_agg(r."Date") AS "Fechas_Informes"
    FROM dbo."Internships" i
      JOIN dbo."Agreements" a ON a."Id" = i."AgreementId"
      JOIN dbo."Company" c ON c."CompanyId" = a."CompanyId"
@@ -37,5 +37,5 @@ AS SELECT i."InternshipsId" AS "IdPractica",
      JOIN dbo."Payment" p2 ON p2."InternshipId" = i."InternshipsId"
      JOIN dbo."Products" p3 ON p3."InternshipId" = i."InternshipsId"
      JOIN dbo."Reports" r ON r."InternshipId" = i."InternshipsId"
-  GROUP BY i."InternshipsId", a."Id", c."CompanyId", s."DocumentId", p."ProfessorsId", s2."SupervisorId", p2."PaymentId", p3."ProductId", r."ReportId";
+  GROUP BY i."InternshipsId", a."Id", c."CompanyId", s."DocumentId", p."ProfessorsId", s2."SupervisorId", p2."PaymentId";
   

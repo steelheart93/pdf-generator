@@ -57,27 +57,27 @@ $row = consultar_tabla($conexion, "dbo.vistapractica", '"IdPractica" = ' . $id);
         <table class="table table-bordered">
             <tr>
                 <td><b>Código:</b></td>
-                <td><?php echo $row['CodigoEstudiante'] ?></td>
+                <td><?php echo $row['CodigoEstudiante']; ?></td>
             </tr>
             <tr>
                 <td><b>Nombres:</b></td>
-                <td><?php echo $row['NombresEstudiante'] ?></td>
+                <td><?php echo $row['NombresEstudiante']; ?></td>
             </tr>
             <tr>
                 <td><b>Apellidos:</b></td>
-                <td><?php echo $row['ApellidosEstudiante'] ?></td>
+                <td><?php echo $row['ApellidosEstudiante']; ?></td>
             </tr>
             <tr>
                 <td><b>Correo electrónico:</b></td>
-                <td><?php echo $row['CorreoEstudiante'] ?></td>
+                <td><?php echo $row['CorreoEstudiante']; ?></td>
             </tr>
             <tr>
                 <td><b>Teléfono:</b></td>
-                <td><?php echo $row['TelefonoEstudiante'] ?></td>
+                <td><?php echo $row['TelefonoEstudiante']; ?></td>
             </tr>
             <tr>
                 <td><b>Docente asignado:</b></td>
-                <td><?php echo $row['NombreCompleto_Docente'] ?></td>
+                <td><?php echo $row['NombreCompleto_Docente']; ?></td>
             </tr>
         </table>
 
@@ -85,143 +85,126 @@ $row = consultar_tabla($conexion, "dbo.vistapractica", '"IdPractica" = ' . $id);
         <p class="text-center"><b>INFORMACIÓN DE LA PRÁCTICA</b></p>
         <table class="table table-bordered">
             <tr>
-                <td><b>Tipo de práctica:</b></td>
-                <td><?php echo $row['TipoPractica'] ?></td>
+                <td colspan=2><b>Tipo de práctica:</b></td>
+                <td colspan=2><?php echo $row['TipoPractica']; ?></td>
             </tr>
             <tr>
-                <td><b>Entidad donde desarrolla la práctica:</b></td>
-                <td><?php echo $row['NombresEstudiante'] ?></td>
+                <td colspan=2><b>Entidad donde desarrolla la práctica:</b></td>
+                <td colspan=2><?php echo $row['NombreEmpresa_Convenio']; ?></td>
             </tr>
             <tr>
-                <td><b>Dependencia donde desarrolla la práctica:</b></td>
-                <td><?php echo $row['ApellidosEstudiante'] ?></td>
+                <td colspan=2><b>Dependencia donde desarrolla la práctica:</b></td>
+                <td colspan=2><?php echo $row['DependenciaPractica']; ?></td>
             </tr>
             <tr>
-                <td><b>Fecha de inicio:</b></td>
-                <td><?php echo_date($row['CorreoEstudiante'])?></td>
+                <td colspan=2><b>Fecha de inicio:</b></td>
+                <td colspan=2><?php echo_date($row['IniciaPractica']);?></td>
             </tr>
             <tr>
-                <td><b>Fecha de terminación:</b></td>
-                <td><?php echo_date($row['CorreoEstudiante'])?></td>
+                <td colspan=2><b>Fecha de terminación:</b></td>
+                <td colspan=2><?php echo_date($row['FinalizaPractica']);?></td>
             </tr>
             <tr>
-                <td><b>Horario previsto:</b></td>
-                <td><?php echo $row['TelefonoEstudiante'] ?></td>
+                <td colspan=2><b>Horario previsto:</b></td>
+                <?php $hEntrada = $row['HoraEntrada_Practica'];?>
+                <?php $hSalida = $row['HoraSalida_Practica'];?>
+                <td colspan=2><?php echo "Entrada a las $hEntrada - Salida a las $hSalida"; ?></td>
             </tr>
             <tr>
                 <td><b>Horas de trabajo semanales:</b></td>
-                <td><?php echo $row['TelefonoEstudiante'] ?></td>
+                <td><?php echo $row['HorasSemanales_Practica']; ?></td>
+                <td><b>Práctica remunerada:</b></td>
+                <td><?php echo $row['Remuneracion_Practica'] ? "SI" : "NO"; ?></td>
             </tr>
             <tr>
-                <td><b>Práctica remunerada:</b></td>
-                <td><?php echo $row['TelefonoEstudiante'] ?></td>
+                <td colspan=2><b>Nombre del funcionario responsable de la entidad:</b></td>
+                <td colspan=2><?php echo $row['NombreCompleto_Responsable']; ?></td>
+            </tr>
+            <tr>
+                <td colspan=2><b>Cargo del funcionario:</b></td>
+                <td colspan=2><?php echo $row['CargoResponsable']; ?></td>
+            </tr>
+            <tr>
+                <td colspan=2><b>Teléfono del funcionario:</b></td>
+                <td colspan=2><?php echo $row['TelefonoResponsable']; ?></td>
+            </tr>
+            <tr>
+                <td colspan=2><b>Correo electrónico del funcionario:</b></td>
+                <td colspan=2><?php echo $row['CorreoResponsable']; ?></td>
             </tr>
         </table>
 
-
-        <p class="text-justify">
-            <b>LA UNIVERSIDAD DE CALDAS Y <?php echo strtoupper($row['NombreEmpresa_Convenio']); ?></b>, firmamos
-            convenio TipoConvenio de FechaFirma_Convenio por un
-            con prórroga ProrrogaConvenio, para el desarrollo de actividades
-            conjuntas entre ellas las prácticas académicas, institucionales y pasantías, presentamos.
-        </p>
-
-        <table>
+        <br><br>
+        <p class="text-center"><b>DESARROLLO DE LA PRÁCTICA</b></p>
+        <table class="table table-bordered">
             <tr>
-                <td class="custom-col-1">FACULTAD:</td>
-                <td class="custom-col-2">
-                    <b>FacultadEstudiante']); ?></b>
-                </td>
+                <td><b>Principal área tématica de la práctica:</b></td>
+                <td><?php echo $row['ObjetivoGeneral_Practica']; ?></td>
             </tr>
             <tr>
-                <td class="custom-col-1">PROGRAMA:</td>
-                <td class="custom-col-2">
-                    <b>ProgramaEstudiante']); ?></b>
-                </td>
-            </tr>
-            <tr>
-                <td class="custom-col-1">PRACTICA ACADEMICA DE:</td>
-                <td class="custom-col-2">
-                    <b>NombreCompleto_Estudiante']); ?></b>
-                    <br>C.C. CedulaEstudiante']; ?>
-                </td>
-            </tr>
-            <tr>
-                <td class="custom-col-1">ACTIVIDADES:</td>
-                <td class="custom-col-2">
-                    <?php $actividades = explode(";", $row['ObjetivosEspecificos_Practica']);?>
-                    <?php for ($i = 1; $i < count($actividades); $i++) {?>
-                        <b><?php echo $i . "."; ?></b> <?php echo $actividades[$i - 1]; ?>
+                <td><b>Principales funciones a desarrollar:</b></td>
+                <td>
+                    <?php $funciones = explode(";", $row['ObjetivosEspecificos_Practica']);?>
+                    <?php for ($i = 1; $i < count($funciones); $i++) {?>
+                        <b><?php echo $i . "."; ?></b> <?php echo $funciones[$i - 1]; ?>
                         <br>
                     <?php }?>
                 </td>
             </tr>
-            <tr>
-                <td class="custom-col-1">ASESOR UNICALDAS:</td>
-                <td class="custom-col-2">
-                    <b><?php echo strtoupper($row['NombreCompleto_Docente']); ?></b>
-                </td>
-            </tr>
-            <tr>
-                <td class="custom-col-1">ASESOR <?php echo strtoupper($row['NombreEmpresa_Convenio']); ?>:</td>
-                <td class="custom-col-2">
-                    <b><?php echo strtoupper($row['NombreCompleto_Responsable']); ?></b>
-                </td>
-            </tr>
-            <tr>
-                <td class="custom-col-1">DURACIÓN:</td>
-                <td class="custom-col-2">
-                    Desde el <?php echo_date($row['IniciaPractica']);?> y hasta el <?php echo_date($row['FinalizaPractica']);?>.
-                </td>
-            </tr>
-            <tr>
-                <td class="custom-col-1">NOTA:</td>
-                <td class="custom-col-2">
-                    La práctica se adelantara de manera ModalidadPractica']); ?>.
-                </td>
-            </tr>
         </table>
 
-        <br>
-        <p class="text-justify">
-            La presente carta de compromiso se perfecciona con la firma del Ordenador de Gasto, el
-            Asesor Institucional, el Asesor Académico y el estudiante. Para constancia se firma en
-            Manizales, <?php echo_date($row['FechaDiligenciamiento']);?>.
-        </p>
+        <table class="table table-bordered">
+            <tr>
+                <td><b>Producto esperado en el desarrollo de la práctica</b></td>
+                <td><b>Fecha de entrega</b></td>
+            </tr>
+            <?php $descripciones = explode(",", substr($row['Descripciones_Productos'], 1, -1));?>
+            <?php $fechas = explode(",", substr($row['Fechas_Productos'], 1, -1));?>
+            <?php for ($i = 0; $i < count($descripciones); $i++) {?>
+                <tr>
+                    <td><b><?php echo $i + 1 . "."; ?></b><?php echo $descripciones[$i]; ?></td>
+                    <td><?php echo_date(substr($fechas[$i], 1, -1));?></td>
+                </tr>
+            <?php }?>
+        </table>
 
-        <table>
+        <br><br>
+        <p class="text-center"><b>INFORMACIÓN PARA EL PROFESOR</b></p>
+        <table class="table table-bordered">
             <tr>
-                <td>
-                    <br><br><br>
-                    <b>PAULA LÓPEZ CHICA</b>
-                    <br>Ordenadora de Gasto
-                    <br>Vicerrectora de Proyección Universitaria (E)
-                    <br>Asesora Institucional
-                    <br>Universidad de Caldas
-                </td>
+                <td><b>Descripción del informe</b></td>
+                <td><b>Fecha de entrega</b></td>
             </tr>
+            <?php $descripciones = explode(",", substr($row['Descripciones_Informes'], 1, -1));?>
+            <?php $fechas = explode(",", substr($row['Fechas_Informes'], 1, -1));?>
+            <?php for ($i = 0; $i < count($descripciones); $i++) {?>
+                <tr>
+                    <td><b><?php echo $i + 1 . "."; ?></b><?php echo $descripciones[$i]; ?></td>
+                    <td><?php echo_date(substr($fechas[$i], 1, -1));?></td>
+                </tr>
+            <?php }?>
+        </table>
+
+        <br><br><br>
+        <table class="table table-borderless">
             <tr>
                 <td>
-                    <br><br><br>
-                    <b>JOSE FERNANDO BARAHONA</b>
-                    <br>Director de Proyección Social
-                    <br>Coordinador de Práctica
-                    <br>Universidad de Manizales
+                    <div class=border><br><br><br><br></div>
+                    <br>
+                    <b>Firma del estudiante solicitante</b>
+                    <br><?php echo $row['NombresEstudiante'] . " " . $row['ApellidosEstudiante']; ?>
                 </td>
                 <td>
-                    <br><br><br>
-                    <b>JUAN CAMILO MEJÍA CAMPUZANO</b>
-                    <br>Practicante
-                    <br>Administración de Empresas
-                    <br>Universidad de Manizales
+                    <div class=border><br><br><br><br></div>
+                    <br>
+                    <b>Firma del profesor asignado</b>
+                    <br><?php echo $row['NombreCompleto_Docente']; ?>
                 </td>
-            </tr>
-            <tr>
-                <td style="font-size: 0.6em;">
-                    <br><br>
-                    <b>Proyecto:</b> Esperanza Román
-                    <br>Profesional Especializado
-                    <br>Vicerrectoría de Proyección Universitaria
+                <td>
+                    <div class=border><br><br><br><br></div>
+                    <br>
+                    <b>Firma del funcionario responsable</b>
+                    <br><?php echo $row['NombreCompleto_Responsable']; ?>
                 </td>
             </tr>
         </table>
