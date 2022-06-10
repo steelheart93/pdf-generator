@@ -95,15 +95,15 @@ $row = consultar_tabla($conexion, "dbo.vistaminuta", '"No_CartaCompromiso" = ' .
                 </td>
             </tr>
             <tr>
-                <td class="custom-col-1">ASESOR UNICALDAS:</td>
-                <td class="custom-col-2">
-                    <b><?php echo strtoupper($row['NombreCompleto_Docente']); ?></b>
-                </td>
-            </tr>
-            <tr>
                 <td class="custom-col-1">ASESOR <?php echo strtoupper($row['NombreEmpresa_Convenio']); ?>:</td>
                 <td class="custom-col-2">
                     <b><?php echo strtoupper($row['NombreCompleto_Responsable']); ?></b>
+                </td>
+            </tr>
+            <tr>
+                <td class="custom-col-1">ASESOR UNICALDAS:</td>
+                <td class="custom-col-2">
+                    <b><?php echo strtoupper($row['NombreCompleto_Docente']); ?></b>
                 </td>
             </tr>
             <tr>
@@ -145,30 +145,29 @@ $row = consultar_tabla($conexion, "dbo.vistaminuta", '"No_CartaCompromiso" = ' .
             Manizales, <?php echo_date($row['FechaCreacion']);?>.
         </p>
 
-        <table>
+        <table class="table table-borderless">
             <tr>
                 <td>
                     <br><br><br>
-                    <b>PAULA LÓPEZ CHICA</b>
-                    <br>Ordenadora de Gasto
-                    <br>Vicerrectora de Proyección Universitaria (E)
-                    <br>Asesora Institucional
-                    <br>Universidad de Caldas
+                    <b><?php echo strtoupper($row['NombreCompleto_Responsable']); ?></b>
+                    <br><?php echo ucfirst($row['CargoResponsable']); ?>
+                    <br>Asesor Institucional
+                    <br><?php echo ucfirst($row['NombreEmpresa_Convenio']); ?>
                 </td>
             </tr>
             <tr>
                 <td>
                     <br><br><br>
-                    <b>JOSE FERNANDO BARAHONA</b>
-                    <br>Director de Proyección Social
+                    <b><?php echo strtoupper($row['NombreCompleto_Docente']); ?></b>
+                    <br>Docente
                     <br>Coordinador de Práctica
-                    <br>Universidad de Manizales
+                    <br>Universidad de Caldas
                 </td>
                 <td>
                     <br><br><br>
-                    <b>JUAN CAMILO MEJÍA CAMPUZANO</b>
-                    <br>Practicante
-                    <br>Administración de Empresas
+                    <b><?php echo strtoupper($row['NombreCompleto_Estudiante']); ?></b>
+                    <br>Prácticante
+                    <br><?php echo ucfirst($row['ProgramaEstudiante']); ?>
                     <br>Universidad de Manizales
                 </td>
             </tr>
