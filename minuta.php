@@ -112,6 +112,8 @@ $row = consultar_tabla($conexion, "dbo.vistaminuta", '"No_CartaCompromiso" = ' .
                     Desde el <?php echo_date($row['IniciaPractica']);?> y hasta el <?php echo_date($row['FinalizaPractica']);?>.
                 </td>
             </tr>
+
+            <?php if ($row['TipoPractica'] == 1) {?>
             <tr>
                 <td class="custom-col-1">APOYO ECONOMICO:</td>
                 <td class="custom-col-2">
@@ -124,18 +126,33 @@ $row = consultar_tabla($conexion, "dbo.vistaminuta", '"No_CartaCompromiso" = ' .
                     <?php }?>
                 </td>
             </tr>
+            <?php }?>
+
+            <?php $anotaciones = explode(";", $row['Anotaciones']);?>
+            <?php for ($i = 1; $i < count($anotaciones); $i++) {?>
             <tr>
                 <td class="custom-col-1">NOTA:</td>
                 <td class="custom-col-2">
-                    <?php echo $row['Anotaciones']; ?>
+                    <?php echo $anotaciones[$i - 1]; ?>
                 </td>
             </tr>
+            <?php }?>
+
             <tr>
                 <td class="custom-col-1">NOTA:</td>
                 <td class="custom-col-2">
                     La práctica se adelantara de manera <?php echo strtolower($row['ModalidadPractica']); ?>.
                 </td>
             </tr>
+
+            <?php if (isset($row['CompromisoPresupuestal'])) {?>
+            <tr>
+                <td class="custom-col-1">COMPROMISO PRESUPUESTAL:</td>
+                <td class="custom-col-2">
+                    Nº <?php echo $row['CompromisoPresupuestal']; ?>
+                </td>
+            </tr>
+            <?php }?>
         </table>
 
         <br>

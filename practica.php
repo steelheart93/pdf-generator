@@ -86,7 +86,7 @@ $row = consultar_tabla($conexion, "dbo.vistapractica", '"IdPractica" = ' . $id);
         <table class="table table-bordered">
             <tr>
                 <td colspan=2><b>Tipo de práctica:</b></td>
-                <td colspan=2><?php echo $row['TipoPractica']; ?></td>
+                <td colspan=2><?php echo $row['TipoPractica'] ? "Externa" : "Interna"; ?></td>
             </tr>
             <tr>
                 <td colspan=2><b>Entidad donde desarrolla la práctica:</b></td>
@@ -106,8 +106,8 @@ $row = consultar_tabla($conexion, "dbo.vistapractica", '"IdPractica" = ' . $id);
             </tr>
             <tr>
                 <td colspan=2><b>Horario previsto:</b></td>
-                <?php $hEntrada = $row['HoraEntrada_Practica'];?>
-                <?php $hSalida = $row['HoraSalida_Practica'];?>
+                <?php $hEntrada = return_time($row['HoraEntrada_Practica']);?>
+                <?php $hSalida = return_time($row['HoraSalida_Practica']);?>
                 <td colspan=2><?php echo "Entrada a las $hEntrada - Salida a las $hSalida"; ?></td>
             </tr>
             <tr>
@@ -163,7 +163,7 @@ $row = consultar_tabla($conexion, "dbo.vistapractica", '"IdPractica" = ' . $id);
             <?php for ($i = 0; $i < count($descripciones); $i++) {?>
                 <tr>
                     <td><b><?php echo $i + 1 . "."; ?></b><?php echo $descripciones[$i]; ?></td>
-                    <td><?php echo_date(substr($fechas[$i], 1, -1));?></td>
+                    <td><?php echo_date(substr($fechas[0], 1, -1));?></td>
                 </tr>
             <?php }?>
         </table>
@@ -180,7 +180,7 @@ $row = consultar_tabla($conexion, "dbo.vistapractica", '"IdPractica" = ' . $id);
             <?php for ($i = 0; $i < count($descripciones); $i++) {?>
                 <tr>
                     <td><b><?php echo $i + 1 . "."; ?></b><?php echo $descripciones[$i]; ?></td>
-                    <td><?php echo_date(substr($fechas[$i], 1, -1));?></td>
+                    <td><?php echo_date(substr($fechas[0], 1, -1));?></td>
                 </tr>
             <?php }?>
         </table>

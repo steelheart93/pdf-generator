@@ -15,6 +15,11 @@ function echo_date($date)
     echo date('Y-m-d', strtotime(str_replace('-', '/', $date)));
 }
 
+function return_time($time)
+{
+    return date('H:s A', strtotime(str_replace('-', '/', $time)));
+}
+
 function conectar_bd()
 {
     $host = "ec2-3-217-251-77.compute-1.amazonaws.com";
